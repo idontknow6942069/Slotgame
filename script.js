@@ -5,6 +5,7 @@ const goldDisplay = document.getElementById("gold");
 const betSelect = document.getElementById("betSelect");
 const resultMsg = document.getElementById("resultMsg");
 const winSound = document.getElementById("winSound");
+const spinSound = document.getElementById("spinSound");
 
 function updateGoldDisplay() {
   goldDisplay.textContent = gold;
@@ -20,6 +21,7 @@ function spin() {
   gold -= bet;
   updateGoldDisplay();
   resultMsg.textContent = "";
+  spinSound.play();
 
   const reels = [
     document.getElementById("r1"),
@@ -28,9 +30,10 @@ function spin() {
   ];
 
   let results = [];
+  let spinCount = [15, 20, 25];
 
   reels.forEach((reel, i) => {
-    let count = 10 + i * 5;
+    let count = spinCount[i];
     const interval = setInterval(() => {
       const symbol = symbols[Math.floor(Math.random() * symbols.length)];
       reel.textContent = symbol;
@@ -58,5 +61,5 @@ function spin() {
     }
 
     updateGoldDisplay();
-  }, 2000);
+  }, 2700);
 }
