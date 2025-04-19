@@ -3,17 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Telegram Slot Game</title>
+  <title>Pirate Slots</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Slot Machine</h1>
-  <div class="slot">
-    <div class="reel" id="r1">🍒</div>
-    <div class="reel" id="r2">🍋</div>
-    <div class="reel" id="r3">🍉</div>
+  <div class="container">
+    <h1>Pirate Slots</h1>
+
+    <div class="balance">Gold: <span id="gold">100</span> 🪙</div>
+
+    <div class="bet">
+      Bet:
+      <select id="betSelect">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select> 🪙
+    </div>
+
+    <div class="slot">
+      <div class="reel" id="r1">☠️</div>
+      <div class="reel" id="r2">⚓</div>
+      <div class="reel" id="r3">🪙</div>
+    </div>
+
+    <button onclick="spin()">Spin!</button>
+
+    <div class="result" id="resultMsg"></div>
+
+    <audio id="winSound" src="assets/win.mp3" preload="auto"></audio>
+    <audio id="spinSound" src="assets/spin.mp3" preload="auto"></audio>
   </div>
-  <button onclick="spin()">Spin!</button>
 
   <script src="script.js"></script>
 </body>
