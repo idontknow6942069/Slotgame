@@ -1,4 +1,4 @@
-const symbols = ["☠️", "⚓", "‍☠️", "🏴‍☠️", "🪙", "🍺", "🦜", "💰"];
+
 let gold = 100;
 
 const goldDisplay = document.getElementById("gold");
