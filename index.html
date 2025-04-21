@@ -9,35 +9,40 @@
 </head>
 <body>
   <div class="container">
-    <h1>Pirate Slots</h1>
+    <header>
+      <h1>Pirate Slots</h1>
+    </header>
 
-    <div class="balance">Gold: <span id="gold">100</span> 🪙</div>
-
-    <div class="bet">
-      Bet:
-      <select id="betSelect">
-        <option value="5">5</option>
-        <option value="10" selected>10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-      </select> 🪙
+    <div class="balance-bar">
+      <div class="balance">Gold: <span id="gold">1000</span> 🪙</div>
+      <div class="controls">
+        <label for="betSelect">Bet:</label>
+        <select id="betSelect">
+          <option value="1">1</option>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="50">50</option>
+        </select>
+        <button id="max-bet-btn">Max Bet</button>
+      </div>
     </div>
 
     <div class="slot-grid">
-      <div class="reel" id="r1"></div>
-      <div class="reel" id="r2"></div>
-      <div class="reel" id="r3"></div>
+      <div class="reel-row" id="r1"></div>
+      <div class="reel-row" id="r2"></div>
+      <div class="reel-row" id="r3"></div>
     </div>
 
-    <button id="spin-btn">Spin!</button>
-    <button id="max-bet-btn">Max Bet</button>
+    <div class="action-bar">
+      <button id="spin-btn">Spin!</button>
+    </div>
 
     <div class="result" id="resultMsg"></div>
 
     <audio id="winSound" src="assets/win.mp3" preload="auto"></audio>
     <audio id="spinSound" src="assets/spin.mp3" preload="auto"></audio>
+    <audio id="bgMusic" src="assets/bg-music.mp3" preload="auto" loop></audio>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
