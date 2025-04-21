@@ -1,11 +1,22 @@
-
-let gold = 100;
+const symbols = [
+  "assets/icons/treasure-chest.svg",
+  "assets/icons/pirate-ship.svg",
+  "assets/icons/gold-coins.svg",
+  "assets/icons/skull.svg",
+  "assets/icons/rum-bottle.svg",
+  "assets/icons/anchor.svg",
+  "assets/icons/sword.svg",
+  "assets/icons/map.svg"
+];
+let gold = 1000;
 
 const goldDisplay = document.getElementById("gold");
 const betSelect = document.getElementById("betSelect");
 const resultMsg = document.getElementById("resultMsg");
 const winSound = document.getElementById("winSound");
 const spinSound = document.getElementById("spinSound");
+const spinBtn = document.getElementById("spin-btn");
+const maxBetBtn = document.getElementById("max-bet-btn");
 
 function updateGoldDisplay() {
   goldDisplay.textContent = gold;
@@ -29,37 +40,27 @@ function spin() {
     document.getElementById("r3")
   ];
 
-  let results = [];
-  let spinCount = [15, 20, 25];
-
-  reels.forEach((reel, i) => {
-    let count = spinCount[i];
-    const interval = setInterval(() => {
+  reels.forEach((reel) => {
+    reel.innerHTML = ""; // Clear the reel
+    for (let i = 0; i < 5; i++) {
       const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-      reel.textContent = symbol;
-      results[i] = symbol;
-      count--;
-      if (count === 0) clearInterval(interval);
-    }, 100);
+      const slot = document.createElement("div");
+      slot.classList.add("slot");
+      slot.innerHTML = `<img src="${symbol}" alt="symbol" />`;
+      reel.appendChild(slot);
+    }
   });
 
   setTimeout(() => {
-    const [s1, s2, s3] = results;
-
-    if (s1 === s2 && s2 === s3) {
-      const winAmount = bet * 5;
-      gold += winAmount;
-      winSound.play();
-      resultMsg.textContent = `Jackpot! Ye won ${winAmount} gold!`;
-    } else if (s1 === s2 || s2 === s3 || s1 === s3) {
-      const winAmount = bet * 2;
-      gold += winAmount;
-      winSound.play();
-      resultMsg.textContent = `A lucky strike! Ye won ${winAmount} gold!`;
-    } else {
-      resultMsg.textContent = `Arrr... better luck next spin.`;
-    }
-
+    winSound.play();
+    resultMsg.textContent = "Arrr! Ye won some gold!";
+    gold += bet * 2; // Example win multiplier
     updateGoldDisplay();
-  }, 2700);
+  }, 2000);
 }
+
+spinBtn.addEventListener("click", spin);
+maxBetBtn.addEventListener("click", () => {
+  betSelect.value = Math.min(gold, 50);
+  spin();
+});
