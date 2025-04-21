@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pirate Slots</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -22,13 +23,14 @@
       </select> 🪙
     </div>
 
-    <div class="slot">
-      <div class="reel" id="r1">☠️</div>
-      <div class="reel" id="r2">⚓</div>
-      <div class="reel" id="r3">🪙</div>
+    <div class="slot-grid">
+      <div class="reel" id="r1"></div>
+      <div class="reel" id="r2"></div>
+      <div class="reel" id="r3"></div>
     </div>
 
-    <button onclick="spin()">Spin!</button>
+    <button id="spin-btn">Spin!</button>
+    <button id="max-bet-btn">Max Bet</button>
 
     <div class="result" id="resultMsg"></div>
 
